@@ -1,6 +1,6 @@
 {
   "name": "@sanity/incompatible-plugin",
-  "version": "0.0.1-studio-v3.1",
+  "version": "1.0.0",
   "description": "Display an error dialog in Sanity Studio v2 when a v3 plugin has been installed.",
   "source": "./src/index.tsx",
   "main": "./lib/index.js",
