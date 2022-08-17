@@ -4,11 +4,13 @@ Small helper library that will display a warning in Sanity Studio v2 when a plug
 
 ## Installation
 
-> npm i --save @sanity/incompatible-plugin
-
+```bash
+npm i @sanity/incompatible-plugin
+```
 or 
-
-> yarn add @sanity/incompatible-plugin
+```bash
+yarn add @sanity/incompatible-plugin
+```
 
 ## Usage
 
