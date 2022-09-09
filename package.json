@@ -27,8 +27,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@sanity/icons": "^1.3.3",
-    "@sanity/ui": "^0.37.18",
+    "@sanity/icons": "^1.3.4",
+    "@sanity/ui": "^0.38.0",
     "react-copy-to-clipboard": "^5.1.0"
   },
   "peerDependencies": {
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^15.0.0",
-    "@sanity/semantic-release-preset": "^2.0.0",
+    "@sanity/semantic-release-preset": "^2.0.1",
     "@types/react": "^18.0.10",
     "@types/react-copy-to-clipboard": "^5.0.2",
     "@types/react-dom": "^18.0.5",
