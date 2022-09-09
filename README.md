@@ -61,3 +61,14 @@ Add these to `files` in the plugin `package.json` alongside anything else alread
 Done! 
 
 If your v3 plugin gets installed in a V2 studio by mistake, a dialog will display how to fix it.
+
+
+## Develop
+
+### Release new version
+
+Run ["CI & Release" workflow](https://github.com/sanity-io/incompatible-plugin/actions/workflows/main.yml).
+Make sure to select the main branch and check "Release new version".
+
+Semantic release will only release on configured branches, so it is safe to run release on any branch.
+
