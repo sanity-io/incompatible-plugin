@@ -1,6 +1,13 @@
 name: CI & Release
 on:
+  # Build on pushes to release branches
   push:
+    branches: [main]
+  # Build on pull requests targeting release branches
+  pull_request:
+    branches: [main]
+  # https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow
+  # https://github.com/sanity-io/semantic-release-preset/actions/workflows/ci.yml
   workflow_dispatch:
     inputs:
       release:
@@ -16,11 +23,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [ubuntu-latest, macos-latest, windows-latest]
-        node-version:
-          - 16
-          - 14
-          - 12
+        os: [ubuntu-latest]
+        # Test the oldest Node.js version we support, the latest LTS release and the current version in development
+        node: [12, lts/*, current]
+        include:
+          # mac and windows only need to test the LTS version of node
+          - os: macos-latest
+            node: lts/*
+          - os: windows-latest
+            node: lts/*
     steps:
       - name: Set git to use LF
         run: |
@@ -47,8 +58,8 @@ jobs:
       - uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3
         with:
           node-version: lts/*
-          cache: 'npm'
-      - run: npm install
+          cache: npm
+      - run: npm ci
       # Branches that will release new versions are defined in .releaserc.json
       - run: npx semantic-release
         env:
