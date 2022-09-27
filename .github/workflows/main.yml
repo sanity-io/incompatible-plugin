@@ -23,15 +23,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
+        platform: [ubuntu-latest]
         # Test the oldest Node.js version we support, the latest LTS release and the current version in development
-        node: [12, lts/*, current]
+        node-version: [12, lts/*, current]
         include:
           # mac and windows only need to test the LTS version of node
-          - os: macos-latest
-            node: lts/*
-          - os: windows-latest
-            node: lts/*
+          - platform: macos-latest
+            node-version: lts/*
+          - platform: windows-latest
+            node-version: lts/*
     steps:
       - name: Set git to use LF
         run: |
