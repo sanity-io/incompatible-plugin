@@ -6,7 +6,8 @@
   },
   "scripts": {
     "build": "sanity build",
-    "postinstall": "(cd .. && npm i && npx yalc publish) && yalc add @sanity/incompatible-plugin --pure",
+    "postinstall": "(cd .. && npm i && npx yalc publish) && npx yalc add @sanity/incompatible-plugin",
+    "prestart": "npm run postinstall",
     "start": "sanity start"
   },
   "dependencies": {
@@ -16,6 +17,7 @@
     "@sanity/default-layout": "^2.34.0",
     "@sanity/default-login": "^2.34.0",
     "@sanity/desk-tool": "^2.34.0",
+    "@sanity/incompatible-plugin": "file:.yalc/@sanity/incompatible-plugin",
     "prop-types": "^15.7",
     "react": "^17.0",
     "react-dom": "^17.0",
