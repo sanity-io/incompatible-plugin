@@ -6,8 +6,8 @@
   },
   "scripts": {
     "build": "sanity build",
-    "postinstall": "(cd .. && npm i && npx yalc publish) && npx yalc add @sanity/incompatible-plugin",
-    "prestart": "npm run postinstall",
+    "preinstall": "(cd .. && npm i && npx yalc publish) && npx yalc add @sanity/incompatible-plugin",
+    "prestart": "npm run preinstall",
     "start": "sanity start"
   },
   "dependencies": {
