@@ -60,7 +60,7 @@ export function IncompatiblePlugins(props: IncompatiblePluginsProps) {
                 <Text>
                   The following
                   {plugins.length > 1 ? ' plugins are ' : ' plugin is '} incompatible with this
-                  Sanity Studio (V2):
+                  Sanity Studio v2:
                 </Text>
               </Box>
               {plugins.map((p) => (
@@ -79,7 +79,7 @@ export function IncompatiblePlugins(props: IncompatiblePluginsProps) {
               ))}
               <Text>
                 {plugins.length > 1 ? 'These are' : 'It is'} built for{' '}
-                <a href="https://www.sanity.io/studio-v3">Sanity Studio V3</a>.
+                <a href="https://www.sanity.io/studio-v3">Sanity Studio v3</a>.
               </Text>
             </Stack>
 
