@@ -3,5 +3,11 @@
   "extends": [
     "github>sanity-io/renovate-presets//ecosystem/auto",
     "github>sanity-io/renovate-presets//ecosystem/studio-v2"
+  ],
+  "packageRules": [
+    {
+       "matchFiles": ["test-studio/package.json"],
+      "extends": [":semanticCommitTypeAll(chore)"]
+    }
   ]
 }
