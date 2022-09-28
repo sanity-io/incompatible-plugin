@@ -6,8 +6,16 @@
     "sanity",
     "sanity-plugin"
   ],
+  "homepage": "https://github.com/sanity-io/incompatible-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/sanity-io/incompatible-plugin/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sanity-io/incompatible-plugin.git"
+  },
   "license": "MIT",
-  "author": "",
+  "author": "Sanity.io <hello@sanity.io>",
   "main": "./lib/index.js",
   "source": "./src/index.tsx",
   "types": "./lib/index.d.ts",
