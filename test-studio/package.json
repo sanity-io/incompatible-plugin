@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanity-io/incompatible-plugin.git"
+  },
+  "scripts": {
+    "build": "sanity build",
+    "start": "sanity start"
+  },
+  "dependencies": {
+    "@sanity/base": "^2.34.0",
+    "@sanity/core": "^2.34.0",
+    "@sanity/default-layout": "^2.34.0",
+    "@sanity/default-login": "^2.34.0",
+    "@sanity/desk-tool": "^2.34.0",
+    "prop-types": "^15.7",
+    "react": "^17.0",
+    "react-dom": "^17.0",
+    "styled-components": "^5.2.0"
+  }
+}

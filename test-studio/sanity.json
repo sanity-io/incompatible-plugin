@@ -1,0 +1,19 @@
+{
+  "root": true,
+  "api": {
+    "projectId": "hh6budgo",
+    "dataset": "migration"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool"
+  ],
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    }
+  ]
+}

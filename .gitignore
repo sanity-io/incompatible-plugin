@@ -3,16 +3,16 @@
 *.log
 
 # Coverage directory used by tools like istanbul
-/coverage
+coverage
 
 # Dependency directories
-/node_modules
+node_modules
 
 # Compiled code
-/lib
+lib
+dist
 
 .idea/
+.vscode/
 
 *.iml
-
-lib
