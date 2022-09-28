@@ -5,6 +5,15 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/sanity-io/incompatible-plugin/compare/v1.0.1...v1.0.2) (2022-09-28)
+
+### Bug Fixes
+
+- add package json metadata ([9a65590](https://github.com/sanity-io/incompatible-plugin/commit/9a655901fb76214d55aaf308117ac35922f56ea3))
+- declare `@reach/auto-id` as a dependency ([dd3baf8](https://github.com/sanity-io/incompatible-plugin/commit/dd3baf8b627c9c0d5b87c51703279822ecb7de09))
+- improve peerDependencies ([b4910a0](https://github.com/sanity-io/incompatible-plugin/commit/b4910a065c3e44851183c19e0459897cf0c8793b))
+- update doc links ([dc59930](https://github.com/sanity-io/incompatible-plugin/commit/dc59930c58f4cacdfa097706af894a3836947f2e))
+
 ### [1.0.1](https://github.com/sanity-io/incompatible-plugin/compare/v1.0.0...v1.0.1) (2022-09-09)
 
 ### Bug Fixes
