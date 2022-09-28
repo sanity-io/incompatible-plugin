@@ -9,10 +9,8 @@ coverage
 node_modules
 
 # Compiled code
-lib
+/lib
 dist
-.yalc
-yalc.lock
 
 .idea/
 .vscode/
