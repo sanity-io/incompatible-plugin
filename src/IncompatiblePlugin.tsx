@@ -79,7 +79,7 @@ export function IncompatiblePlugins(props: IncompatiblePluginsProps) {
               ))}
               <Text>
                 {plugins.length > 1 ? 'These are' : 'It is'} built for{' '}
-                <a href="#">Sanity Studio V3</a>.
+                <a href="https://www.sanity.io/studio-v3">Sanity Studio V3</a>.
               </Text>
             </Stack>
 
@@ -109,7 +109,9 @@ export function IncompatiblePlugins(props: IncompatiblePluginsProps) {
               )}
 
               <Text>
-                <a href="#"> About Sanity Studio versions</a>
+                <a href="https://beta.sanity.io/docs/platform/studio/v2-to-v3">
+                  About Sanity Studio versions
+                </a>
               </Text>
             </Stack>
           </Stack>
@@ -128,7 +130,7 @@ function DowngradablePlugins(props: IncompatiblePluginsProps) {
     return null
   }
 
-  const yarnCommand = `yarn add ${plugins.map((p) => `${p.name}@"${p.versions.v2}"`).join(' ')}`
+  const yarnCommand = `yarn add ${plugins.map((p) => `${p.name}@${p.versions.v2}`).join(' ')}`
 
   return (
     <>
