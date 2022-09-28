@@ -35,6 +35,7 @@
     "watch": "tsc -w"
   },
   "dependencies": {
+    "@reach/auto-id": "^0.17.0",
     "react-copy-to-clipboard": "^5.1.0"
   },
   "devDependencies": {
