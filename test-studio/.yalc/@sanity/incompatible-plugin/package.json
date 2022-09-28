@@ -1,6 +1,6 @@
 {
   "name": "@sanity/incompatible-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Display an error dialog in Sanity Studio v2 when a v3 plugin has been installed.",
   "keywords": [
     "sanity",
@@ -44,5 +44,5 @@
     "react-dom": "^16.9 || ^17 || ^18",
     "styled-components": "^5.2"
   },
-  "yalcSig": "6b8aac0584a36018698f1924b86ecbbf"
+  "yalcSig": "02088e950c569185ea8c23c43223070a"
 }

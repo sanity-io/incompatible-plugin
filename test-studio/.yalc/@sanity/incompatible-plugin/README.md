@@ -59,7 +59,7 @@ Add these to `files` in the plugin `package.json` alongside anything else alread
 
 Done!
 
-If your v3 plugin gets installed in a V2 studio by mistake, a dialog will display how to fix it.
+If your v3 plugin gets installed in a v2 studio by mistake, a dialog will display how to fix it.
 
 ## Develop
 
