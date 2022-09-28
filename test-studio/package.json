@@ -6,7 +6,8 @@
   },
   "scripts": {
     "build": "sanity build",
-    "start": "sanity start"
+    "start": "sanity start",
+    "prebuild": "(cd .. && npm i && npx yalc publish) && yalc add @sanity/incompatible-plugin --pure"
   },
   "dependencies": {
     "@sanity/base": "^2.34.0",
