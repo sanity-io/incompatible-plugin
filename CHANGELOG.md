@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://github.com/sanity-io/incompatible-plugin/compare/v1.0.2...v1.0.3) (2022-09-28)
+
+### Bug Fixes
+
+- version number casing ([#17](https://github.com/sanity-io/incompatible-plugin/issues/17)) ([832aa92](https://github.com/sanity-io/incompatible-plugin/commit/832aa92195709385b3e9f2a02188cd2baecf04ad))
+
 ## [1.0.2](https://github.com/sanity-io/incompatible-plugin/compare/v1.0.1...v1.0.2) (2022-09-28)
 
 ### Bug Fixes
