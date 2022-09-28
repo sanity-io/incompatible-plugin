@@ -1,0 +1,26 @@
+name: 🤖 Auto sync .yalc ✨
+
+on:
+  push:
+    branches: [main]
+
+defaults:
+  run:
+    working-directory: test-studio
+
+jobs:
+  run:
+    name: Update .yalc generated code for the test-studio
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+      - uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3
+        with:
+          cache: yarn
+          cache-dependency-path: test-studio/yarn.lock
+          node-version: lts/*
+      - run: yarn
+      - uses: EndBug/add-and-commit@d4d066316a2a85974a05efb42be78f897793c6d9 # tag=v9
+        with:
+          commit: --no-verify
+          message: 'chore(bot): sync .yalc'
