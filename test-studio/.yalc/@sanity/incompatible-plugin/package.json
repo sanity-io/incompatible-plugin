@@ -1,0 +1,47 @@
+{
+  "name": "@sanity/incompatible-plugin",
+  "version": "1.0.1",
+  "description": "Display an error dialog in Sanity Studio v2 when a v3 plugin has been installed.",
+  "keywords": [
+    "sanity",
+    "sanity-plugin"
+  ],
+  "homepage": "https://github.com/sanity-io/incompatible-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/sanity-io/incompatible-plugin/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sanity-io/incompatible-plugin.git"
+  },
+  "license": "MIT",
+  "author": "Sanity.io <hello@sanity.io>",
+  "main": "./lib/index.js",
+  "source": "./src/index.tsx",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "src",
+    "lib"
+  ],
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "clean": "rimraf lib",
+    "compile": "tsc --noEmit",
+    "format": "prettier --ignore-path .gitignore -w .",
+    "lint": "eslint .",
+    "prepublishOnly": "npm run build",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "@sanity/icons": "^1.3.4",
+    "@sanity/ui": "^0.38.0",
+    "react-copy-to-clipboard": "^5.1.0"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.9.0 || ^17.0.0 || ^18.0.0",
+    "styled-components": "^5.0.0"
+  },
+  "yalcSig": "732f77d069fc9616d0b73dff10e8ec15"
+}
