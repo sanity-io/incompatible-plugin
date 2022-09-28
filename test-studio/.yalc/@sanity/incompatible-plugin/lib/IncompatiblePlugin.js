@@ -80,7 +80,7 @@ function IncompatiblePlugins(props) {
                             plugins.length > 1 ? 'These are' : 'It is',
                             " built for",
                             ' ',
-                            react_1.default.createElement("a", { href: "#" }, "Sanity Studio V3"),
+                            react_1.default.createElement("a", { href: "https://www.sanity.io/studio-v3" }, "Sanity Studio V3"),
                             ".")),
                     react_1.default.createElement(ui_1.Card, null,
                         react_1.default.createElement(ui_1.Stack, { space: 4 },
@@ -96,7 +96,7 @@ function IncompatiblePlugins(props) {
                                 " on ",
                                 react_1.default.createElement("a", { href: p.sanityExchangeUrl }, "Sanity Exchange")))); }))),
                         react_1.default.createElement(ui_1.Text, null,
-                            react_1.default.createElement("a", { href: "#" }, " About Sanity Studio versions"))))))));
+                            react_1.default.createElement("a", { href: "https://beta.sanity.io/docs/platform/studio/v2-to-v3" }, "About Sanity Studio versions"))))))));
 }
 exports.IncompatiblePlugins = IncompatiblePlugins;
 function DowngradablePlugins(props) {
@@ -105,7 +105,7 @@ function DowngradablePlugins(props) {
     if (!plugins.length) {
         return null;
     }
-    var yarnCommand = "yarn add ".concat(plugins.map(function (p) { return "".concat(p.name, "@\"").concat(p.versions.v2, "\""); }).join(' '));
+    var yarnCommand = "yarn add ".concat(plugins.map(function (p) { return "".concat(p.name, "@").concat(p.versions.v2); }).join(' '));
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement(ui_1.Text, null,
             "Downgrade the plugin",

@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@sanity/incompatible-plugin": {
-      "signature": "732f77d069fc9616d0b73dff10e8ec15",
+      "signature": "6b8aac0584a36018698f1924b86ecbbf",
       "file": true
     }
   }
