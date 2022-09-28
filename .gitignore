@@ -12,6 +12,7 @@ node_modules
 lib
 dist
 .yalc
+yalc.lock
 
 .idea/
 .vscode/
