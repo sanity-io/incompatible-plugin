@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/sanity-io/incompatible-plugin/compare/v1.0.3...v1.0.4) (2022-10-07)
+
+### Bug Fixes
+
+- rewritten for minimal dependencies: no more sanity/ui or styled-components ([7cbfb01](https://github.com/sanity-io/incompatible-plugin/commit/7cbfb012c54f71781172d1b5f835cc8807c93451))
+
 ## [1.0.3](https://github.com/sanity-io/incompatible-plugin/compare/v1.0.2...v1.0.3) (2022-09-28)
 
 ### Bug Fixes
