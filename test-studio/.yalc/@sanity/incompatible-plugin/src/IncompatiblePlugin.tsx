@@ -1,20 +1,5 @@
 import React, {useCallback, useState} from 'react'
 import {CopyToClipboard} from 'react-copy-to-clipboard'
-import {
-  Card,
-  Dialog,
-  Stack,
-  studioTheme,
-  ThemeProvider,
-  Text,
-  Code,
-  Button,
-  Heading,
-  Flex,
-  Box,
-} from '@sanity/ui'
-import {useId} from '@reach/auto-id'
-import styled from 'styled-components'
 import {ClipboardIcon, CheckmarkIcon} from '@sanity/icons'
 
 export interface PluginDef {
@@ -26,104 +11,94 @@ export interface PluginDef {
   sanityExchangeUrl?: string
 }
 
-const CopyButton = styled(Button)`
-  background: none;
-  border: none;
-  box-shadow: none;
-  height: 35px;
-
-  &:hover {
-    background: white;
-  }
-`
-
 export interface IncompatiblePluginsProps {
   plugins: PluginDef[]
 }
 
 export function IncompatiblePlugins(props: IncompatiblePluginsProps) {
   const {plugins} = props
-  const id = useId()
 
   const pluginsWithLinks = plugins.filter((p) => !!p.sanityExchangeUrl)
   return (
-    <ThemeProvider theme={studioTheme}>
-      <Dialog
-        id={id || ''}
-        header={`Incompatible plugin${plugins.length > 1 ? 's' : ''}`}
-        width={1}
-      >
-        <Card padding={4}>
-          <Stack space={5}>
-            <Stack space={4}>
-              <Box>
-                <Text>
-                  The following
-                  {plugins.length > 1 ? ' plugins are ' : ' plugin is '} incompatible with this
-                  Sanity Studio v2:
-                </Text>
-              </Box>
-              {plugins.map((p) => (
-                <Card key={p.name}>
-                  <Stack space={2}>
-                    <Text>
-                      <strong>
-                        <span style={{color: '#C3362C'}}>{p.name}</span>
-                      </strong>
-                    </Text>
-                    <Text>
-                      Version: <span style={{color: '#C3362C'}}>{p.versions.v3}</span>
-                    </Text>
-                  </Stack>
-                </Card>
-              ))}
-              <Text>
-                {plugins.length > 1 ? 'These are' : 'It is'} built for{' '}
-                <a href="https://www.sanity.io/studio-v3">Sanity Studio v3</a>.
-              </Text>
-            </Stack>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyItems: 'center',
+        fontFamily: 'arial',
+        width: '100%',
+        height: '100%',
+      }}
+    >
+      <div style={{maxWidth: 800, padding: 20, margin: 'auto', border: '1px solid grey'}}>
+        <h2 style={{margin: 0, marginBottom: 5, fontSize: '1.2em'}}>
+          Incompatible plugin{plugins.length > 1 ? 's' : ''}
+        </h2>
+        <div>
+          The following
+          {plugins.length > 1 ? ' plugins are ' : ' plugin is '} incompatible with this Sanity
+          Studio v2:
+        </div>
 
-            <Card>
-              <Stack space={4}>
-                <Heading size={2}>Resolve the issue</Heading>
+        <div style={{marginTop: '10px'}}>
+          {plugins.map((p) => (
+            <div key={p.name} style={{marginBottom: '10px'}}>
+              <div style={{marginRight: '10px'}}>
+                <strong>
+                  <span style={{color: '#C3362C'}}>{p.name}</span>
+                </strong>
+              </div>
+              <div>
+                Version: <span style={{color: '#C3362C'}}>{p.versions.v3}</span>
+              </div>
+            </div>
+          ))}
+        </div>
 
-                <DowngradablePlugins plugins={plugins} />
-                <RemovePlugins plugins={plugins} />
+        <div>
+          {plugins.length > 1 ? 'These are' : 'It is'} built for{' '}
+          <a href="https://www.sanity.io/studio-v3">Sanity Studio v3</a>.
+        </div>
 
-                <Text>... and then restart the Studio.</Text>
-              </Stack>
-            </Card>
+        <div>
+          <h2 style={{margin: 0, marginBottom: 5, marginTop: 20, fontSize: '1.2em'}}>
+            Resolve the issue
+          </h2>
 
-            <Stack space={4}>
-              <Heading size={1}>More information</Heading>
-              {pluginsWithLinks.length > 0 && (
-                <Stack space={2}>
-                  {pluginsWithLinks.map((p) => (
-                    <React.Fragment key={p.name}>
-                      <Text>
-                        {p.name} on <a href={p.sanityExchangeUrl}>Sanity Exchange</a>
-                      </Text>
-                    </React.Fragment>
-                  ))}
-                </Stack>
-              )}
+          <DowngradablePlugins plugins={plugins} />
+          <span style={{margin: 10}}>
+            <RemovePlugins plugins={plugins} />
+          </span>
 
-              <Text>
-                <a href="https://beta.sanity.io/docs/platform/studio/v2-to-v3">
-                  About Sanity Studio versions
-                </a>
-              </Text>
-            </Stack>
-          </Stack>
-        </Card>
-      </Dialog>
-    </ThemeProvider>
+          <div>... and then restart the Studio.</div>
+
+          <div>
+            <h2 style={{margin: 0, marginBottom: 5, marginTop: 20, fontSize: '1.2em'}}>
+              More information
+            </h2>
+            {pluginsWithLinks.length > 0 && (
+              <div>
+                {pluginsWithLinks.map((p) => (
+                  <div key={p.name}>
+                    {p.name} on <a href={p.sanityExchangeUrl}>Sanity Exchange</a>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div style={{marginTop: 20}}>
+              <a href="https://beta.sanity.io/docs/platform/studio/v2-to-v3">
+                About Sanity Studio versions
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
 function DowngradablePlugins(props: IncompatiblePluginsProps) {
-  const [copied, handleCopy] = useCopy()
-
   const plugins = props.plugins.filter((p) => !!p.versions.v2)
 
   if (!plugins.length) {
@@ -134,40 +109,16 @@ function DowngradablePlugins(props: IncompatiblePluginsProps) {
 
   return (
     <>
-      <Text>
+      <div style={{marginBottom: 10}}>
         Downgrade the plugin{plugins.length > 1 ? 's' : ''} by running this command in the Studio
         directory:
-      </Text>
-      <Card shadow={1} padding={4} style={{background: '#F1F3F6'}}>
-        <Flex gap={4}>
-          <Box flex={1}>
-            <Code
-              style={{
-                color: '#101112FF',
-                overflowX: 'auto',
-                height: '2.5em',
-                display: 'flex',
-              }}
-            >
-              {yarnCommand}
-            </Code>
-          </Box>
-          <CopyToClipboard text={yarnCommand} onCopy={handleCopy}>
-            <CopyButton
-              title="Copy to clipboard"
-              icon={copied ? CheckmarkIcon : ClipboardIcon}
-              mode="bleed"
-            />
-          </CopyToClipboard>
-        </Flex>
-      </Card>
+      </div>
+      <Command command={yarnCommand} />
     </>
   )
 }
 
 function RemovePlugins(props: IncompatiblePluginsProps) {
-  const [copied, handleCopy] = useCopy()
-
   const plugins = props.plugins.filter((p) => !p.versions.v2)
 
   if (!plugins.length) {
@@ -178,34 +129,58 @@ function RemovePlugins(props: IncompatiblePluginsProps) {
 
   return (
     <>
-      <Text>
+      <div style={{marginBottom: 10}}>
         Uninstall the plugin{plugins.length > 1 ? 's' : ''} by running this command in the Studio
         directory:
-      </Text>
-      <Card shadow={1} padding={4} style={{background: '#F1F3F6'}}>
-        <Flex gap={4}>
-          <Box flex={1}>
-            <Code
-              style={{
-                color: '#101112FF',
-                overflowX: 'auto',
-                height: '2.5em',
-                display: 'flex',
-              }}
-            >
-              {uninstallCommand}
-            </Code>
-          </Box>
-          <CopyToClipboard text={uninstallCommand} onCopy={handleCopy}>
-            <CopyButton
-              title="Copy to clipboard"
-              icon={copied ? CheckmarkIcon : ClipboardIcon}
-              mode="bleed"
-            />
-          </CopyToClipboard>
-        </Flex>
-      </Card>
+      </div>
+      <Command command={uninstallCommand} />
     </>
+  )
+}
+
+function Command({command}: {command: string}) {
+  const [copied, handleCopy] = useCopy()
+
+  return (
+    <div
+      style={{
+        background: '#e1e3e5',
+        padding: 20,
+        border: '1px solid lightgrey',
+        display: 'flex',
+        justifyContent: 'space-between',
+      }}
+    >
+      <div>
+        <div
+          style={{
+            color: '#101112FF',
+            overflowX: 'auto',
+            height: '2.5em',
+            fontFamily: 'monospace',
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          {command}
+        </div>
+      </div>
+      <CopyToClipboard text={command} onCopy={handleCopy}>
+        <div>
+          <button
+            type="button"
+            style={{display: 'flex', alignItems: 'center', gap: 5, height: 35, width: 35}}
+            title="Copy to clipboard"
+          >
+            {copied ? (
+              <CheckmarkIcon width={25} height={25} />
+            ) : (
+              <ClipboardIcon width={25} height={25} />
+            )}
+          </button>
+        </div>
+      </CopyToClipboard>
+    </div>
   )
 }
 

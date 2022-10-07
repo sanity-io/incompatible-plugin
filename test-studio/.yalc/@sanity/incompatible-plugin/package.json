@@ -34,15 +34,12 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@reach/auto-id": "^0.17.0",
+    "@sanity/icons": "^1.3",
     "react-copy-to-clipboard": "^5.1.0"
   },
   "peerDependencies": {
-    "@sanity/icons": "^1.3",
-    "@sanity/ui": "*",
     "react": "^16.9 || ^17 || ^18",
-    "react-dom": "^16.9 || ^17 || ^18",
-    "styled-components": "^5.2"
+    "react-dom": "^16.9 || ^17 || ^18"
   },
-  "yalcSig": "d52b4bc5bce41662acd2b1cb3a0d8ecd"
+  "yalcSig": "da68a6cc8d8cd7e80c3bc4fc324731c3"
 }
