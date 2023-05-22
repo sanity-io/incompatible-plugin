@@ -41,7 +41,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
-    "@sanity/semantic-release-preset": "^2.0.2",
+    "@sanity/semantic-release-preset": "^4.0.0",
     "@sanity/ui": "^0.37.22",
     "@types/react": "^18.0.10",
     "@types/react-copy-to-clipboard": "^5.0.4",
