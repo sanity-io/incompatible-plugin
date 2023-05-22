@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 export interface PluginDef {
     name: string;
     versions: {
@@ -10,4 +10,4 @@ export interface PluginDef {
 export interface IncompatiblePluginsProps {
     plugins: PluginDef[];
 }
-export declare function IncompatiblePlugins(props: IncompatiblePluginsProps): JSX.Element;
+export declare function IncompatiblePlugins(props: IncompatiblePluginsProps): React.JSX.Element;
