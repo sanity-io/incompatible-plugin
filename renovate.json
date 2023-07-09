@@ -6,7 +6,7 @@
   ],
   "packageRules": [
     {
-      "matchFiles": ["test-studio/package.json"],
+      "matchFileNames": ["test-studio/package.json"],
       "extends": [":semanticCommitTypeAll(chore)"]
     }
   ]
