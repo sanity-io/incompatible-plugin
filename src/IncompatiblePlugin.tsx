@@ -1,7 +1,10 @@
 import React, {useCallback, useState} from 'react'
-import {CopyToClipboard} from 'react-copy-to-clipboard'
 import {CheckmarkIcon} from './CheckmarkIcon'
 import {ClipboardIcon} from './ClipboardIcon'
+
+function noop() {
+  // intentional noop
+}
 
 export interface PluginDef {
   name: string
@@ -140,7 +143,7 @@ function RemovePlugins(props: IncompatiblePluginsProps) {
 }
 
 function Command({command}: {command: string}) {
-  const [copied, handleCopy] = useCopy()
+  const [copied, handleCopy] = useCopy(command)
 
   return (
     <div
@@ -166,37 +169,41 @@ function Command({command}: {command: string}) {
           {command}
         </div>
       </div>
-      <CopyToClipboard text={command} onCopy={handleCopy}>
-        <div>
-          <button
-            type="button"
-            style={{display: 'flex', alignItems: 'center', gap: 5, height: 35, width: 35}}
-            title="Copy to clipboard"
-          >
-            {copied ? (
-              <CheckmarkIcon width={25} height={25} />
-            ) : (
-              <ClipboardIcon width={25} height={25} />
-            )}
-          </button>
-        </div>
-      </CopyToClipboard>
+      <div>
+        <button
+          type="button"
+          style={{display: 'flex', alignItems: 'center', gap: 5, height: 35, width: 35}}
+          title="Copy to clipboard"
+          onClick={handleCopy}
+        >
+          {copied ? (
+            <CheckmarkIcon width={25} height={25} />
+          ) : (
+            <ClipboardIcon width={25} height={25} />
+          )}
+        </button>
+      </div>
     </div>
   )
 }
 
-function useCopy() {
+function useCopy(command: string) {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = useCallback(() => {
-    setCopied(true)
-    const timeout = setTimeout(() => {
-      setCopied(false)
-    }, 1000)
-    return () => {
-      clearTimeout(timeout)
+    if (typeof navigator.clipboard === 'undefined') {
+      return noop
     }
-  }, [setCopied])
+
+    navigator.clipboard
+      .writeText(command)
+      .then(() => setCopied(true))
+      .catch(noop)
+
+    setCopied(true)
+    const timeout = setTimeout(() => setCopied(false), 1000)
+    return () => clearTimeout(timeout)
+  }, [setCopied, command])
 
   return [copied, handleCopy] as [typeof copied, typeof handleCopy]
 }
