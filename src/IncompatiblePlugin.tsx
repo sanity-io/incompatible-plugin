@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from 'react'
 import {CopyToClipboard} from 'react-copy-to-clipboard'
-import {ClipboardIcon, CheckmarkIcon} from '@sanity/icons'
+import {CheckmarkIcon} from './CheckmarkIcon'
+import {ClipboardIcon} from './ClipboardIcon'
 
 export interface PluginDef {
   name: string
