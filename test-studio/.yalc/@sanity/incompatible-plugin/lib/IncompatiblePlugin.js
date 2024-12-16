@@ -41,8 +41,11 @@ var __read = (this && this.__read) || function (o, n) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IncompatiblePlugins = void 0;
 var react_1 = __importStar(require("react"));
-var react_copy_to_clipboard_1 = require("react-copy-to-clipboard");
-var icons_1 = require("@sanity/icons");
+var CheckmarkIcon_1 = require("./CheckmarkIcon");
+var ClipboardIcon_1 = require("./ClipboardIcon");
+function noop() {
+    // intentional noop
+}
 function IncompatiblePlugins(props) {
     var plugins = props.plugins;
     var pluginsWithLinks = plugins.filter(function (p) { return !!p.sanityExchangeUrl; });
@@ -119,7 +122,7 @@ function RemovePlugins(props) {
 }
 function Command(_a) {
     var command = _a.command;
-    var _b = __read(useCopy(), 2), copied = _b[0], handleCopy = _b[1];
+    var _b = __read(useCopy(command), 2), copied = _b[0], handleCopy = _b[1];
     return (react_1.default.createElement("div", { style: {
             background: '#e1e3e5',
             padding: 20,
@@ -136,21 +139,23 @@ function Command(_a) {
                     display: 'flex',
                     alignItems: 'center',
                 } }, command)),
-        react_1.default.createElement(react_copy_to_clipboard_1.CopyToClipboard, { text: command, onCopy: handleCopy },
-            react_1.default.createElement("div", null,
-                react_1.default.createElement("button", { type: "button", style: { display: 'flex', alignItems: 'center', gap: 5, height: 35, width: 35 }, title: "Copy to clipboard" }, copied ? (react_1.default.createElement(icons_1.CheckmarkIcon, { width: 25, height: 25 })) : (react_1.default.createElement(icons_1.ClipboardIcon, { width: 25, height: 25 })))))));
+        react_1.default.createElement("div", null,
+            react_1.default.createElement("button", { type: "button", style: { display: 'flex', alignItems: 'center', gap: 5, height: 35, width: 35 }, title: "Copy to clipboard", onClick: handleCopy }, copied ? (react_1.default.createElement(CheckmarkIcon_1.CheckmarkIcon, { width: 25, height: 25 })) : (react_1.default.createElement(ClipboardIcon_1.ClipboardIcon, { width: 25, height: 25 }))))));
 }
-function useCopy() {
+function useCopy(command) {
     var _a = __read((0, react_1.useState)(false), 2), copied = _a[0], setCopied = _a[1];
     var handleCopy = (0, react_1.useCallback)(function () {
+        if (typeof navigator.clipboard === 'undefined') {
+            return noop;
+        }
+        navigator.clipboard
+            .writeText(command)
+            .then(function () { return setCopied(true); })
+            .catch(noop);
         setCopied(true);
-        var timeout = setTimeout(function () {
-            setCopied(false);
-        }, 1000);
-        return function () {
-            clearTimeout(timeout);
-        };
-    }, [setCopied]);
+        var timeout = setTimeout(function () { return setCopied(false); }, 1000);
+        return function () { return clearTimeout(timeout); };
+    }, [setCopied, command]);
     return [copied, handleCopy];
 }
 //# sourceMappingURL=IncompatiblePlugin.js.map

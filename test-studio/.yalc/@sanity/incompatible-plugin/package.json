@@ -33,12 +33,9 @@
     "prepublishOnly": "npm run build",
     "watch": "tsc -w"
   },
-  "dependencies": {
-    "@sanity/icons": "^1.3"
-  },
   "peerDependencies": {
     "react": "^16.9 || ^17 || ^18 || ^19",
     "react-dom": "^16.9 || ^17 || ^18 || ^19"
   },
-  "yalcSig": "7fa543354d35bc5fabbb1a2c3a7efe22"
+  "yalcSig": "4cdd0c263583c8bc43207173bc715d40"
 }
