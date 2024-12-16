@@ -25,7 +25,7 @@ jobs:
       matrix:
         platform: [ubuntu-latest]
         # Test the oldest Node.js version we support, the latest LTS release and the current version in development
-        node-version: [12, lts/*, current]
+        node-version: [lts/-1, lts/*, current]
         include:
           # mac and windows only need to test the LTS version of node
           - platform: macos-latest
