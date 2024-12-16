@@ -37,5 +37,8 @@
     "react": "^16.9 || ^17 || ^18 || ^19",
     "react-dom": "^16.9 || ^17 || ^18 || ^19"
   },
-  "yalcSig": "4cdd0c263583c8bc43207173bc715d40"
+  "overrides": {
+    "conventional-changelog-conventionalcommits": ">= 8.0.0"
+  },
+  "yalcSig": "c98912f964f3a8a52de7b8b3ce45cfea"
 }
