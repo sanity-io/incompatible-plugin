@@ -16,23 +16,36 @@
   },
   "license": "MIT",
   "author": "Sanity.io <hello@sanity.io>",
-  "main": "./lib/index.js",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
   "source": "./src/index.tsx",
-  "types": "./lib/index.d.ts",
+  "types": "./lib/cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/esm/index.d.ts",
+        "default": "./lib/esm/index.js"
+      },
+      "require": {
+        "types": "./lib/cjs/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
+    }
+  },
   "files": [
     "src",
     "lib"
   ],
   "scripts": {
     "prebuild": "npm run clean",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json && echo '{\"type\":\"module\"}' > lib/esm/package.json",
     "clean": "rimraf lib",
     "compile": "tsc --noEmit",
     "format": "prettier --ignore-path .gitignore -w .",
     "lint": "eslint .",
     "prepare": "husky install",
     "prepublishOnly": "npm run build",
-    "watch": "tsc -w"
+    "watch": "tsc -w -p tsconfig.cjs.json"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
